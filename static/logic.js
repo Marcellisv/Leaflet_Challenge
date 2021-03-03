@@ -23,9 +23,8 @@ streetmap.addTo(myMap);
 var queryUrl = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson";
 d3.json(queryUrl, function(data) {
 
-  /// Creat style and function 3 for radiues
+  /// Creat style 
 
-  
   function mapStyle(feature) 
   {
     return {
@@ -61,7 +60,7 @@ d3.json(queryUrl, function(data) {
   }
   
 
-
+//geoJson
   L.geoJson(data, {
 
     pointToLayer: function(feature, latlng) {
@@ -75,7 +74,7 @@ d3.json(queryUrl, function(data) {
 
     }
   }).addTo(myMap);
-
+//Create Legend
   var legend = L.control({
     position: "bottomright"
   });
@@ -85,8 +84,6 @@ d3.json(queryUrl, function(data) {
 
     var grades = [ 1, 2, 3, 4, 5];
     var colors = ["#99ff66", "#66d9ff", "#ffff4d","#ff6633", "#ff3333"];
-
-  // loop thry the intervals of colors to put it in the label
     for (var i = 0; i<grades.length; i++) {
       div.innerHTML +=
       "<i style='background: " + colors[i] + "'></i> " +
